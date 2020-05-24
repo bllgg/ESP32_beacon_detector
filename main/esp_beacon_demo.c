@@ -19,7 +19,7 @@
 #include "freertos/FreeRTOS.h"
 
 
-static const char* DEMO_TAG = "EDDYSTONE_DEMO";
+static const char* DEMO_TAG = "Beacon_DEMO";
 
 /* declare static functions */
 static void esp_gap_cb(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t* param);
@@ -72,7 +72,7 @@ static void esp_gap_cb(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t* par
                         esp_log_buffer_hex("Beacon_DEMO: Device address:", scan_result->scan_rst.bda, ESP_BD_ADDR_LEN);
                         ESP_LOGI(DEMO_TAG, "RSSI of packet:%d dbm", scan_result->scan_rst.rssi);
                         ESP_LOGI(DEMO_TAG, "Data length: %d ", (int) scan_result->scan_rst.adv_data_len);
-                        esp_log_buffer_hex("Beacon_DEMO: data:", scan_result->scan_rst.ble_adv, ESP_BLE_ADV_DATA_LEN_MAX + ESP_BLE_SCAN_RSP_DATA_LEN_MAX);
+                        esp_log_buffer_hex("Beacon_DEMO: data:", scan_result->scan_rst.ble_adv, (int) scan_result->scan_rst.adv_data_len);
                     }
                     break;
                 }
